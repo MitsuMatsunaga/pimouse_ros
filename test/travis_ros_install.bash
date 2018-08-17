@@ -4,7 +4,7 @@
 #pip install --upgrade pip
 #pip3 install -U pip
 #sudo apt-get install python-pip
-pip install -U pip==18.0
+pip install -U pip==18.0 1>/dev/null 2>&1
 hash -d pip
 pip install catkin_pkg
 pip install empy
