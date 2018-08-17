@@ -1,4 +1,4 @@
-#!/bin/bash -xve
+#!/bin/bash -xv
 
 #required packages
 #pip install --upgrade pip
