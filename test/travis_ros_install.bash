@@ -4,7 +4,9 @@
 #pip install --upgrade pip
 #pip3 install -U pip
 #sudo apt-get install python-pip
-pip install -U pip
+pip install -U pip==18.0
+pip install --upgrade pip
+hash -d pip
 pip install catkin_pkg
 pip install empy
 pip install pyyaml
