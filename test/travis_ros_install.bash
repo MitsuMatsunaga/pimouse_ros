@@ -2,7 +2,8 @@
 
 #required packages
 #pip install --upgrade pip
-pip3 install -U pip
+#pip3 install -U pip
+sudo apt-get install python-pip
 pip install catkin_pkg
 pip install empy
 pip install pyyaml
