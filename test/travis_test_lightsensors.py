@@ -3,16 +3,16 @@
 import unittest , rostest
 import rosnode , rospy
 import time 
-form pimouse_ros.msg import LightSensorsValues
+from pimouse_ros.msg import LightSensorValues
 
 class LightsensorTest(unittest.TestCase):
    def setUp(self):
-       self.count = 0;
+       self.count = 0
        rospy.Subscriver('/lightsensors' LightSensorValues, self.callback)
        self.values = LightSensorValues()
 
    def callback(self,data):
-       self.count += 1;
+       self.count += 1
        self.values = data
        
    def check_values(self,lf,ls,rs,rf):
@@ -24,14 +24,14 @@ class LightsensorTest(unittest.TestCase):
        self.assertEqual(vs.sum_all, lf+ls+rs+rf ,"different value: sum_all")
        self.assertEqual(vs.sum_forward, lf+rf, "different value: sum_forward")
 
-   def test_node_exists(self)
-       nodes = rosnode.get.nodenames()
-       self.assertIn('/lightsensors' ,node , "node does not exist")
+   def test_node_exist(self):
+       nodes = rosnode.get.node_names()
+       self.assertIn('/lightsensors' ,nodes, "node does not exist")
 
    def test_get_value(self):
        rospy.set_param('lightsensors_freq' ,10)
        time.sleep(2)
-       with open("/dev/rtlightsensor0","w") as f
+       with open("/dev/rtlightsensor0","w") as f:
             f.write("-1 0 123 4567\n")
 
        time.sleep(3)
@@ -39,7 +39,7 @@ class LightsensorTest(unittest.TestCase):
        self.assertFalse(self.count == 0 , "cannot subscribe the topic")
        self.check_values(4321,123,0,-1)
 
-   def test_change_parameter(self)
+   def test_change_parameter(self):
        rospy.set_param('lightsensors_freq',1)
        time.sleep(2)
        c_prev = self.count
